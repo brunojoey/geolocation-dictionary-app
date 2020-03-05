@@ -35,6 +35,10 @@ input {
     text-align: center;
 }
 
+td {
+    font-style: italic;
+}
+
 /* Mobile first queries */
 
 /* Larger than mobile */
