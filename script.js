@@ -10,3 +10,22 @@ $.ajax({
     console.log(response);
     
 })
+
+const geoApiKey = 'at_hD6JpWnRqX4YG6LsBbHUWzg0rBYAs'
+var geoURL = 'https://geo.ipify.org/api/v1?apiKey=' + geoApiKey
+var state;
+var city;
+var lat;
+var lng;
+
+$.ajax({
+    url: geoURL,
+    method: "GET"
+}).then(function (response) {
+    console.log(response);
+    state = response.location.region;
+    city = response.location.city;
+    lat = response.location.lat;
+    lng = response.location.lng;
+})
+
