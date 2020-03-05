@@ -1,31 +1,31 @@
-var Owlbot = require('owlbot-js');
-var client = Owlbot("5e44986a36e9cafddb7b577dad4bf365b0368b87");
-client.define('owl').then(function(result){
-   console.log(result);
-});
 
-function getWord(){
+var baseURL = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
+const apiKey = "?key=dea56771-7642-4f50-895c-bb6a6a34f4de"
+var searchTerm = ""
+var url = baseURL + "default" + apiKey
+
+
+
+function sendQuery(url){
     $.ajax({
-        url: 'https://owlbot.info/api/v4/dictionary/owl?format=json' , 
-
-        headers: { "Access-Control-Allow-Origin": "*", 
-                    'Access-Control-Allow-Credentials' : 'true', 
-                    "Authorization": "Token" + "5e44986a36e9cafddb7b577dad4bf365b0368b87"  
-                    }, //Authentication using a token to access API
-
-        type: "GET",
-
-
-        data: { //parameters 
-        },
-
+        url: url,
+        method: "GET"
+      }).then(function (response) {
+        console.log(response);
+        displayResponse(response);
+    
     })
+}
 
-        .done(function (data) {
-            // Show formatted JSON on webpage.
-            console.log(JSON.stringify(data));
+function displayResponse(data){
 
-        })
 
 }
-getWord();
+
+$("#search").on("click", function(){
+    event.preventDefault();
+    console.log("it works");
+    searchTerm = $("#input").val();
+    url = baseURL+searchTerm+apiKey;
+    sendQuery(url);
+})
