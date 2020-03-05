@@ -39,6 +39,11 @@ td {
     font-style: italic;
 }
 
+.bottom {
+    position: fixed;
+    bottom: 0;
+}
+
 /* Mobile first queries */
 
 /* Larger than mobile */
