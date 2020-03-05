@@ -60,5 +60,4 @@ $.ajax({
     localStorage.setItem("state", state);
     localStorage.setItem('city', city);
     localStorage.setItem('postalcode', postalCode);
-    
 })
