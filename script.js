@@ -1,31 +1,64 @@
-var Owlbot = require('owlbot-js');
-var client = Owlbot("5e44986a36e9cafddb7b577dad4bf365b0368b87");
-client.define('owl').then(function(result){
-   console.log(result);
-});
+var baseURL = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
+const apiKey = "?key=dea56771-7642-4f50-895c-bb6a6a34f4de"
+var searchTerm = ""
+var isFirstSearch = true;
+var url = baseURL + "default" + apiKey
 
-function getWord(){
+function sendQuery(url){
     $.ajax({
-        url: 'https://owlbot.info/api/v4/dictionary/owl?format=json' , 
+        url: url,
+        method: "GET"
+      }).then(function (response) {
 
-        headers: { "Access-Control-Allow-Origin": "*", 
-                    'Access-Control-Allow-Credentials' : 'true', 
-                    "Authorization": "Token" + "5e44986a36e9cafddb7b577dad4bf365b0368b87"  
-                    }, //Authentication using a token to access API
-
-        type: "GET",
-
-
-        data: { //parameters 
-        },
-
+        console.log(response);
+        displayResponse(response);
+    
     })
-
-        .done(function (data) {
-            // Show formatted JSON on webpage.
-            console.log(JSON.stringify(data));
-
-        })
-
 }
-getWord();
+
+
+function displayResponse(data){
+
+    if(isFirstSearch){
+        $("#tbody").html("");
+        isFirstSearch = false;
+    }
+    var tr = $("<tr>");
+    var td1 = $("<td>");
+    var td2 = $("<td>");
+
+    td1.text(searchTerm)
+    td2.text(data[0].shortdef[0]);
+
+    tr.append(td1);
+    tr.append(td2);
+
+    $("#tbody").prepend(tr);
+}
+
+$("#search").on("click", function(){
+    event.preventDefault();
+    searchTerm = $("#input").val().toLowerCase();
+    url = encodeURI(baseURL + searchTerm + apiKey);
+    sendQuery(url);
+})
+
+const geoApiKey = 'at_hD6JpWnRqX4YG6LsBbHUWzg0rBYAs'
+var geoURL = 'https://geo.ipify.org/api/v1?apiKey=' + geoApiKey
+var state;
+var city;
+var postalCode;
+
+$.ajax({
+    url: geoURL,
+    method: "GET"
+}).then(function (response) {
+    console.log(response);
+    state = response.location.region;
+    city = response.location.city;
+    postalCode = response.location.postalCode;
+    localStorage.setItem("state", state);
+    localStorage.setItem('city', city);
+    localStorage.setItem('postalcode', postalCode);
+    
+})
