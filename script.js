@@ -1,31 +1,31 @@
-var Owlbot = require('owlbot-js');
-var client = Owlbot("5e44986a36e9cafddb7b577dad4bf365b0368b87");
-client.define('owl').then(function(result){
-   console.log(result);
-});
 
-function getWord(){
-    $.ajax({
-        url: 'https://owlbot.info/api/v4/dictionary/owl?format=json' , 
+var baseURL = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
+const apiKey = "?key=dea56771-7642-4f50-895c-bb6a6a34f4de"
+var searchTerm = ""
+var url = baseURL + "frozen" + apiKey
 
-        headers: { "Access-Control-Allow-Origin": "*", 
-                    'Access-Control-Allow-Credentials' : 'true', 
-                    "Authorization": "Token" + "5e44986a36e9cafddb7b577dad4bf365b0368b87"  
-                    }, //Authentication using a token to access API
+$.ajax({
+    url: url,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+    
+})
 
-        type: "GET",
+const geoApiKey = 'at_hD6JpWnRqX4YG6LsBbHUWzg0rBYAs'
+var geoURL = 'https://geo.ipify.org/api/v1?apiKey=' + geoApiKey
+var state;
+var city;
+var lat;
+var lng;
 
-
-        data: { //parameters 
-        },
-
-    })
-
-        .done(function (data) {
-            // Show formatted JSON on webpage.
-            console.log(JSON.stringify(data));
-
-        })
-
-}
-getWord();
+$.ajax({
+    url: geoURL,
+    method: "GET"
+}).then(function (response) {
+    console.log(response);
+    state = response.location.region;
+    city = response.location.city;
+    lat = response.location.lat;
+    lng = response.location.lng;
+})
