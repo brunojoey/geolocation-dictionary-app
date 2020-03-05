@@ -35,16 +35,20 @@ var geoURL = 'https://geo.ipify.org/api/v1?apiKey=' + geoApiKey
 var state;
 var city;
 var postalCode;
+var stateArr = [];
+
 
 $.ajax({
     url: geoURL,
     method: "GET"
 }).then(function (response) {
     console.log(response);
+
     state = response.location.region;
     city = response.location.city;
     postalCode = response.location.postalCode;
-    localStorage.setItem("state", state);
+
+    localStorage.setItem("state", stateArr);
     localStorage.setItem('city', city);
     localStorage.setItem('postalcode', postalCode);
     
