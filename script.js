@@ -1,3 +1,4 @@
+
 var baseURL = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"
 const apiKey = "?key=dea56771-7642-4f50-895c-bb6a6a34f4de"
 var searchTerm = ""
@@ -28,4 +29,3 @@ $.ajax({
     lat = response.location.lat;
     lng = response.location.lng;
 })
-
