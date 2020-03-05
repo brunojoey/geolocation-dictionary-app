@@ -1,1 +1,1 @@
-# geolocation-dictionary-app
+# geolocation-restaurant-app
