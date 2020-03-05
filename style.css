@@ -1,3 +1,4 @@
+/* all elemnts and queries set to be centered and mobile-first ready*/
 body {
     background-color: white;
     margin: 0;
@@ -20,6 +21,7 @@ body {
     text-align: center;
 }
 
+/* in case we need to hide an elemnt*/
 .hide {
     display: none;
 }
@@ -27,6 +29,14 @@ body {
 .table {
     margin: none;
     align-items: center;
+}
+
+input {
+    text-align: center;
+}
+
+td {
+    font-style: italic;
 }
 
 /* Mobile first queries */

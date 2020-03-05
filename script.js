@@ -65,10 +65,14 @@ $.ajax({
 }).then(function (response) {
     console.log(response);
 
+
     locationData.state = response.location.region;
     locationData.city = response.location.city;
     locationData.postalCode = response.location.postalCode;
     
 })
 
+
+
+  
 
