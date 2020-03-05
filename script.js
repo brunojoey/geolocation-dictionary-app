@@ -35,6 +35,25 @@ $.ajax({
     lng = response.location.lng;
 })
 
+function displayResponse(data){
+
+    if(isFirstSearch){
+        $("#tbody").html("");
+        isFirstSearch = false;
+    }
+    var tr = $("<tr>");
+    var td1 = $("<td>");
+    var td2 = $("<td>");
+
+    td1.text(searchTerm)
+    td2.text(data[0].shortdef[0]);
+
+    tr.append(td1);
+    tr.append(td2);
+
+    $("#tbody").prepend(tr);
+}
+
 $("#search").on("click", function(){
     event.preventDefault();
     console.log("it works");
