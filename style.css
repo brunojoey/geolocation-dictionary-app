@@ -24,6 +24,10 @@ body {
     display: none;
 }
 
+input {
+    text-align: center;
+}
+
 .table {
     margin: none;
     align-items: center;
