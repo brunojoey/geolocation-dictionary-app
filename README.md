@@ -14,4 +14,7 @@ You may also search for multiple words in one visit. Your most recent search wil
 ## GitHub Repository Link
 [!] [https://github.com/brunojoey/geolocation-dictionary-app]
 
-## Photo In Use
+## Photos In Use
+![Geolocation Dictionary App on Computer](geolocation-dictionary-app-computer.png)
+![Geolocation Dictionary App on IphoneX](geolocation-dictionary-app-iphoneX.png)
+![Local Storage In Use](local-storage-geolocation-dictionary-app.png)
