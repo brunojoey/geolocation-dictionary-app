@@ -17,7 +17,9 @@ function sendQuery(url) {
         url: url,
         method: "GET"
     }).then(function (response) {
+
         console.log(response)
+
         if (typeof response[0] === "string") {
             handleMispelled(response);
         }
@@ -54,7 +56,7 @@ function displayResponse(data) {
         $("#tbody").html("");
         isFirstSearch = false;
     }
-    
+
     var tr = $("<tr>");
     var td1 = $("<td>");
     var td2 = $("<td>");
