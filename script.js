@@ -75,6 +75,7 @@ function displayResponse(data) {
     }
 
     $("#tbody").prepend(tr);
+    $("#input").val('');
 }
 
 $('document').ready(function () {
@@ -95,7 +96,7 @@ $('document').ready(function () {
 
 // Get location data from geoIP api.
 const geoApiKey = 'at_hD6JpWnRqX4YG6LsBbHUWzg0rBYAs';
-var geoURL = 'https://geo.ipify.org/api/v1?apiKey=' + geoApiKey;
+var geoURL = encodeURI('https://geo.ipify.org/api/v1?apiKey=' + geoApiKey);
 
 $.ajax({
     url: geoURL,
