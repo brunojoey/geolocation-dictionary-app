@@ -17,7 +17,7 @@ function sendQuery(url) {
         url: url,
         method: "GET"
     }).then(function (response) {
-
+        console.log(response)
         if (typeof response[0] === "string") {
             handleMispelled(response);
         }
@@ -54,15 +54,25 @@ function displayResponse(data) {
         $("#tbody").html("");
         isFirstSearch = false;
     }
+    
     var tr = $("<tr>");
     var td1 = $("<td>");
     var td2 = $("<td>");
-
+    var img = $('<img>');
+    
     td1.text(searchTerm)
     td2.text(data[0].shortdef[0]);
 
     tr.append(td1);
     tr.append(td2);
+
+    if (data[0].art !== undefined) {
+        var imgLink = 'https://www.merriam-webster.com/assets/mw/static/art/dict/' + data[0].art.artid + '.gif';
+        img.attr("src", imgLink);
+        img.height('100px');
+        img.width('100px');
+        tr.append(img);
+    }
 
     $("#tbody").prepend(tr);
 }
