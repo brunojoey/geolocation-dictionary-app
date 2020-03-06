@@ -88,8 +88,3 @@ $.ajax({
     locationData.city = response.location.city;
     locationData.postalCode = response.location.postalCode;
 })
-
-
-
-  
-
