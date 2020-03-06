@@ -10,6 +10,7 @@ const apiKey = "?key=dea56771-7642-4f50-895c-bb6a6a34f4de"
 var searchTerm = ""
 var isFirstSearch = true;
 var url = baseURL + "default" + apiKey
+var buttonHolder = $("<div>")
 
 function sendQuery(url){
     $.ajax({
@@ -17,10 +18,33 @@ function sendQuery(url){
         method: "GET"
       }).then(function (response) {
 
-        console.log(response);
+        if (typeof response[0] === "string"){
+            handleMispelled(response);
+        }
         displayResponse(response);
-    
     })
+}
+
+function handleMispelled(data){
+
+    buttonHolder.html("")
+    var div = $("<div>").attr({class: "modal",id: "mod"});
+    div.text("We did not recognize that word.  Did you mean any of these?")
+    
+    for(i=0; i<5; i++){
+        var p = $("<p>").text(data[i]);
+        div.append(p);
+    }
+
+    div.append($("<a>").attr({rel: "modal:close"}))
+
+    var abtn = $("<a>").text("Show suggestions").attr({href: "#mod", rel: "modal:open"})
+
+    abtn.attr("href", "#mod");
+    buttonHolder.append(abtn);
+    $(".container").append(div);
+    $(".container").append(buttonHolder);
+    abtn.trigger("click");
 }
 
 function displayResponse(data){
