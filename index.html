@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- local css file -->
     <link rel="stylesheet" href="style.css">
+    <!-- skeleton css framework -->
     <link rel="stylesheet" href="Skeleton-2.0.4/css/normalize.css">
-    <link rel="stylesheet" href="Skeleton-2.0.4/css/skeleton.css">
+    <!-- modal css external link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <title>Geo-Dictionary</title>
-    <link rel="icon" href="favicon.ico"/>
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico" />
 </head>
+
 <body>
+    <!-- responsive container for all centered conent on the application -->
     <div class="container">
         <div class="row">
             <h1 class="title">Geo-Dictionary.</h1>
         </div>
         </br>
         <div class="row">
-            <input placeholder="enter your word here..." id="input"/>
-        </div> 
+            <!-- placeholder text within the input -->
+            <input placeholder="enter your word here..." id="input" />
+        </div>
         <div class="row">
+            <!-- search button id -->
             <button id="search">Search</button>
         </div>
         <div class="row">
@@ -28,27 +36,32 @@
         <div class="row">
             <table id="table">
                 <thead>
-                <tr>
-                    <th>Word</th>
-                    <th>Definition</th>
-                </tr>
+                    <tr>
+                        <th>Word</th>
+                        <th>Definition</th>
+                    </tr>
                 </thead>
                 <tbody id="tbody">
-                <tr>
-                    <td>geo-dictionary</td>
-                    <td>the greatest dictionary api on the web</td>
-                </tr>
+                    <!-- definitions will append here with tbody -->
+                    <tr>
+                        <td>geo-dictionary</td>
+                        <td>the greatest dictionary api on the web</td>
+                    </tr>
                 </tbody>
             </table>
-        </div> 
-        
+        </div>
+
+        <!-- footer -->
         <div class="bottom">
             <h6>Made by <em>The API Guys</em> &#9400; 2020 </h6>
         </div>
     </div>
 
+    <!-- modal and jquery external scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.js"></script>
+    <!-- local script file -->
     <script src="script.js"></script>
 </body>
+
 </html>
