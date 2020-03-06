@@ -89,5 +89,5 @@ $.ajax({
     locationData.postalCode = response.location.postalCode;
     var h6El = $('#location');
     h6El.text(locationData.city + ' ' + locationData.state);
-    $('#search').append(h6El);
+    $('#location').append(h6El);
 })
