@@ -23,14 +23,6 @@ function sendQuery(url){
     })
 }
 
-    if(isFirstSearch){
-        $("#tbody").html("");
-        isFirstSearch = false;
-    }
-    var tr = $("<tr>");
-    var td1 = $("<td>");
-    var td2 = $("<td>");
-
 function displayResponse(data){
 
     if(isFirstSearch){
@@ -60,21 +52,20 @@ $("#search").on("click", function(){
 })
 
 
-
-
 const geoApiKey = 'at_hD6JpWnRqX4YG6LsBbHUWzg0rBYAs'
 var geoURL = 'https://geo.ipify.org/api/v1?apiKey=' + geoApiKey
-
 
 $.ajax({
     url: geoURL,
     method: "GET"
 }).then(function (response) {
     console.log(response);
-
-
     locationData.state = response.location.region;
     locationData.city = response.location.city;
     locationData.postalCode = response.location.postalCode;
-    
 })
+
+
+
+  
+
