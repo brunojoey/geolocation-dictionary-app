@@ -9,7 +9,9 @@ Input the word you would like to search for the definition of. Then hit the sera
 You may also search for multiple words in one visit. Your most recent search will go ahead of the first word you attempted to search for. 
 
 ## GitHub Pages Deployed Link
+[!] [https://brunojoey.github.io/geolocation-dictionary-app/]
 
 ## GitHub Repository Link
+[!] [https://github.com/brunojoey/geolocation-dictionary-app]
 
 ## Photo In Use
