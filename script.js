@@ -75,7 +75,7 @@ $("#search").on("click", function(){
     localStorage.setItem('location', JSON.stringify(locationData));
 })
 
-
+// Get location data
 const geoApiKey = 'at_hD6JpWnRqX4YG6LsBbHUWzg0rBYAs'
 var geoURL = 'https://geo.ipify.org/api/v1?apiKey=' + geoApiKey
 
@@ -87,6 +87,9 @@ $.ajax({
     locationData.state = response.location.region;
     locationData.city = response.location.city;
     locationData.postalCode = response.location.postalCode;
+    var h6El = $('#location');
+    h6El.text(locationData.city + ' ' + locationData.state);
+    $('#search').append(h6El);
 })
 
 
