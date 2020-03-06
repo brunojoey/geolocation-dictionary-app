@@ -1,4 +1,4 @@
-/* all elemnts and queries set to be centered and mobile-first ready*/
+/* all elemnts and queries set to be centered and mobile-first ready */
 body {
     background-color: white;
     margin: 0;
@@ -8,7 +8,8 @@ body {
     justify-content: center;
     align-items: center;
 }
-  
+
+/* for centering all responsive content on the application */
 .container {
     display: flex;
     justify-content: center;
@@ -16,34 +17,40 @@ body {
     flex-direction: column;
 }
 
+/* align title */
 .title {
     margin: 0;
     text-align: center;
 }
 
-/* in case we need to hide an elemnt*/
+/* in case we need to hide an elemnt */
 .hide {
     display: none;
 }
 
+/* center table contents */
 .table {
     margin: none;
     align-items: center;
 }
 
+/* center user input */
 input {
     text-align: center;
 }
 
+/* italic definitions */
 td {
     font-style: italic;
 }
 
+/* fixed bottom footer */
 .bottom {
     position: fixed;
     bottom: 0;
 }
 
+/* unused pre-emptive class for a header */
 .top {
     position: fixed;
     top: 0;
