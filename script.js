@@ -19,13 +19,11 @@ var locationData = {
           url: url,
           method: "GET"
         }).then(function (response) {
-  
+        //check if api recognized the query word
           if (typeof response[0] === "string"){
               handleMispelled(response);
           }
-          console.log(response);
           displayResponse(response);
-          
       })
   }
   
@@ -41,14 +39,15 @@ var locationData = {
       }
   
       div.append($("<a>").attr({rel: "modal:close"}))
-  
+      
+      //add a button to reshow the suggested search words
       var abtn = $("<a>").text("Show suggestions").attr({href: "#mod", rel: "modal:open"})
   
       abtn.attr("href", "#mod");
       buttonHolder.append(abtn);
       $(".container").append(div);
       $(".container").append(buttonHolder);
-      abtn.trigger("click");
+      abtn.trigger("click"); // automatically trigger button click
   }
   
   
@@ -70,11 +69,14 @@ var locationData = {
       var audioStart;
       var firstLetter;
 
-      if(data[0].hwi.prs!== undefined){
+      if(data[0].hwi.prs!== undefined){ // check if returned data has an audio link
           audioLink =  data[0].hwi.prs[0].sound.audio;
+
+          //get snippets to create the correct file plath
           audioStart = audioLink.slice(0,3);
           firstLetter = audioStart.slice(0,1);
       } 
+      //append the correct subdirectory to the audio url
       if(audioStart === "bix"){
           audioURL += "bix/";
       } else if(audioStart === "gg"){
@@ -119,7 +121,7 @@ var locationData = {
     audioEl.play();
   }
 
-  
+  //send a query to webster api
   $("#search").on("click", function(){
       event.preventDefault();
       searchTerm = $("#input").val().toLowerCase();
