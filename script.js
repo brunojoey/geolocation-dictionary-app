@@ -18,8 +18,6 @@ function sendQuery(url) {
         method: "GET"
     }).then(function (response) {
 
-        console.log(response)
-
         if (typeof response[0] === "string") {
             handleMispelled(response);
         }
@@ -48,7 +46,6 @@ function handleMispelled(data) {
     $(".container").append(buttonHolder);
     abtn.trigger("click");
 }
-
 
 function displayResponse(data) {
 
