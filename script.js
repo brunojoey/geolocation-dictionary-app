@@ -11,6 +11,8 @@ var locationData = {
   var isFirstSearch = true;
   var url = baseURL + "default" + apiKey
   var buttonHolder = $("<div>")
+  var specialChars ="!#$%&'()*+,-./:;<=>?@[\]^_`{|}~0987654321"; // for audio link generation
+
   
   function sendQuery(url){
       $.ajax({
@@ -21,7 +23,9 @@ var locationData = {
           if (typeof response[0] === "string"){
               handleMispelled(response);
           }
+          console.log(response);
           displayResponse(response);
+          
       })
   }
   
@@ -50,6 +54,7 @@ var locationData = {
   
   function displayResponse(data){
   
+    var audioURL = "https://media.merriam-webster.com/soundc11/" //used for audio required
       if(isFirstSearch){
           $("#tbody").html("");
           isFirstSearch = false;
@@ -58,14 +63,62 @@ var locationData = {
       var td1 = $("<td>");
       var td2 = $("<td>");
   
-      td1.text(searchTerm)
+      td1.text(searchTerm);
+
+      //get audio link information
+      var audioLink;
+      var audioStart;
+      var firstLetter;
+
+      if(data[0].hwi.prs!== undefined){
+          audioLink =  data[0].hwi.prs[0].sound.audio;
+          audioStart = audioLink.slice(0,3);
+          firstLetter = audioStart.slice(0,1);
+      } 
+      if(audioStart === "bix"){
+          audioURL += "bix/";
+      } else if(audioStart === "gg"){
+          audioURL +="gg";
+      } else if (specialChars.includes(firstLetter)){
+        audioURL += "number/";
+      } else {
+          audioURL += firstLetter + "/";
+      }
+      audioURL += audioLink +".wav"
+
+      
+      var audioCtrls = $("<audio controls><source src="+audioURL+" />Your browser doesn't support audio</audio>");
+      //line below used to enable autoplay
+    //   audioCtrls.attr("autoplay", true); //
+      audioCtrls.attr("hidden", true);
+      audioCtrls.attr("id", searchTerm);
+
+
+    // code below can be implemented to show each definition 
+
+    //   for(var i = 0; i < data[0].shortdef.length; i++){
+    //       var p = $("<p>");
+    //       p.text(i+1 + ": " + data[0].shortdef[i])
+    //         td2.append(p);
+    //   }
+
       td2.text(data[0].shortdef[0]);
-  
+      tr.on("click", playSound);
       tr.append(td1);
       tr.append(td2);
+      tr.append(audioCtrls);
+      
   
       $("#tbody").prepend(tr);
   }
+
+  function playSound(){ // play a sound when the row is clicked
+
+    event.preventDefault();
+    var audioEl = $(this)[0].lastElementChild;
+    audioEl.play();
+  }
+
   
   $("#search").on("click", function(){
       event.preventDefault();
