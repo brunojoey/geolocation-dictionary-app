@@ -11,6 +11,7 @@ var searchTerm = "";
 var isFirstSearch = true;
 var url = baseURL + "default" + apiKey
 var buttonHolder = $("<div>")
+var specialChars ="!#$%&'()*+,-./:;<=>?@[\]^_`{|}~0987654321"; // for audio link generation
 
 function sendQuery(url) {
     $.ajax({
@@ -52,11 +53,13 @@ function handleMispelled(data) {
 
 function displayResponse(data) {
 
+
     if (isFirstSearch) {
         $("#tbody").html("");
         isFirstSearch = false;
     }
 
+    var audioURL = "https://media.merriam-webster.com/soundc11/" //used for audio required
     var tr = $("<tr>");
     var td1 = $("<td>");
     var td2 = $("<td>");
@@ -65,8 +68,43 @@ function displayResponse(data) {
     td1.text(searchTerm)
     td2.text(data[0].shortdef[0]);
 
+     //get audio link information
+     var audioLink;
+     var audioStart;
+     var firstLetter;
+
+     if(data[0].hwi.prs!== undefined){ // check if returned data has an audio link
+         audioLink =  data[0].hwi.prs[0].sound.audio;
+
+         //get snippets to create the correct file plath
+         audioStart = audioLink.slice(0,3);
+         firstLetter = audioStart.slice(0,1);
+     } 
+     //append the correct subdirectory to the audio url
+     if(audioStart === "bix"){
+         audioURL += "bix/";
+     } else if(audioStart === "gg"){
+         audioURL +="gg";
+     } else if (specialChars.includes(firstLetter)){
+       audioURL += "number/";
+     } else {
+         audioURL += firstLetter + "/";
+     }
+     audioURL += audioLink +".wav"
+
+     
+     var audioCtrls = $("<audio controls><source src="+audioURL+" />Your browser doesn't support audio</audio>");
+     //line below used to enable autoplay
+   //   audioCtrls.attr("autoplay", true); //
+     audioCtrls.attr("hidden", true);
+     audioCtrls.attr("id", searchTerm);
+
+    td2.text(data[0].shortdef[0]);
+    tr.on("click", playSound);
+
     tr.append(td1);
     tr.append(td2);
+    tr.append(audioCtrls);
 
     if (data[0].art !== undefined) {
         var imgLink = 'https://www.merriam-webster.com/assets/mw/static/art/dict/' + data[0].art.artid + '.gif';
@@ -76,9 +114,17 @@ function displayResponse(data) {
         tr.append(img);
     }
 
+    tr.append(audioCtrls);
     $("#tbody").prepend(tr);
     $("#input").val('');
 }
+function playSound(){ // play a sound when the row is clicked
+
+    event.preventDefault();
+    var audioEl = $(this)[0].lastElementChild;
+    console.log(audioEl);
+    audioEl.play();
+  }
 
 $('document').ready(function () {
     $("#search").on("click", function () {
