@@ -1,3 +1,4 @@
+// location object for local storage
 var locationData = {
     state: 'state',
     city: 'city',
@@ -13,6 +14,7 @@ var url = baseURL + "default" + apiKey
 var buttonHolder = $("<div>")
 var specialChars ="!#$%&'()*+,-./:;<=>?@[\]^_`{|}~0987654321"; // for audio link generation
 
+// websters api
 function sendQuery(url) {
     $.ajax({
         url: url,
@@ -26,6 +28,7 @@ function sendQuery(url) {
     })
 }
 
+// check for mispelled words
 function handleMispelled(data) {
 
     buttonHolder.html("")
@@ -103,7 +106,9 @@ function displayResponse(data) {
     tr.append(td2);
     tr.append(audioCtrls);
 
+    // check if data has an image
     if (data[0].art !== undefined) {
+        //append image
         var imgLink = 'https://www.merriam-webster.com/assets/mw/static/art/dict/' + data[0].art.artid + '.gif';
         img.attr("src", imgLink);
         img.height('100px');
@@ -123,6 +128,7 @@ function playSound(){ // play a sound when the row is clicked
     audioEl.play();
   }
 
+  // display definition and store word in local storage
 $('document').ready(function () {
     $("#search").on("click", function () {
         event.preventDefault();
