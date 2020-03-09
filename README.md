@@ -1,7 +1,7 @@
 # Geolocation Dictionary Application
 
 ## Description
-This dictionary uses your searches and your location to pinpoint where you are searching from and what are the most popular searches in your area. Certain words that you search for will have images to accompany their definition. 
+This dictionary uses your searches and your location to pinpoint where you are searching from and what are the most popular searches in your area. Certain words that you search for will have images to accompany their definition. Words will have sound included in them so that you can hear how the word is pronounced.
 
 ## Directions
 Input the word you would like to search for the definition of. Then hit the search button, or press enter, and the word's definition should come up. 
