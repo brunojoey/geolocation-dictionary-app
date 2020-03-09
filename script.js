@@ -81,7 +81,7 @@ function displayResponse(data) {
          var firstTwo = audioLink.slice(0,2);
          firstLetter = audioStart.slice(0,1);
      } 
-     console.log(audioStart);
+     
      //append the correct subdirectory to the audio url
      if(audioStart === "bix"){
          audioURL += "bix/";
@@ -126,7 +126,6 @@ function playSound(){ // play a sound when the row is clicked
 
     event.preventDefault();
     var audioEl = $(this)[0].lastElementChild;
-    console.log(audioEl);
     audioEl.play();
   }
 
