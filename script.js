@@ -78,13 +78,15 @@ function displayResponse(data) {
 
          //get snippets to create the correct file plath
          audioStart = audioLink.slice(0,3);
+         var firstTwo = audioLink.slice(0,2);
          firstLetter = audioStart.slice(0,1);
      } 
+     console.log(audioStart);
      //append the correct subdirectory to the audio url
      if(audioStart === "bix"){
          audioURL += "bix/";
-     } else if(audioStart === "gg"){
-         audioURL +="gg";
+     } else if(firstTwo === "gg"){
+         audioURL +="gg/";
      } else if (specialChars.includes(firstLetter)){
        audioURL += "number/";
      } else {
