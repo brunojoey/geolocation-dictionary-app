@@ -8,6 +8,8 @@ Input the word you would like to search for the definition of. Then hit the sear
 
 You may also search for multiple words in one visit. Your most recent search will go ahead of the first word you attempted to search for. 
 
+To play the sound of the word, you click the row of the word itself.
+
 ## Future Development
 Our future development plans are to have more than one definition be shown to the user. Also, to have a top five searches feature for each individiual city to see what people are searching for in that specific area that is popular.
 
