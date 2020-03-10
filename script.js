@@ -7,7 +7,7 @@ var locationData = {
 };
 
 var baseURL = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/";
-const apiKey = "?key=dea56771-7642-4f50-895c-bb6a6a34f4de";
+const apiKey = ;
 var searchTerm = "";
 var isFirstSearch = true;
 var url = baseURL + "default" + apiKey
