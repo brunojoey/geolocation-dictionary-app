@@ -14,10 +14,10 @@ To play the sound of the word, you click the row of the word itself.
 Our future development plans are to have more than one definition be shown to the user. Also, to have a top five searches feature for each individiual city to see what people are searching for in that specific area that is popular.
 
 ## GitHub Pages Deployed Link
-[!] [https://brunojoey.github.io/geolocation-dictionary-app/]
+[Deployed Link](https://brunojoey.github.io/geolocation-dictionary-app/)
 
 ## GitHub Repository Link
-[!] [https://github.com/brunojoey/geolocation-dictionary-app]
+[Repository Link](https://github.com/brunojoey/geolocation-dictionary-app)
 
 ## Photos In Use
 ![Geolocation Dictionary App on Computer](geolocation-dictionary-app-computer.png)
